@@ -13,6 +13,7 @@ services:
   app:
     # Go実装の場合は golang/ PHP実装の場合は php/
     build: golang/
+    # tty: true
     environment:
       ISUCONP_DB_HOST: mysql
       ISUCONP_DB_PORT: 3306
@@ -25,6 +26,8 @@ services:
       - memcached
     volumes:
       - ./public:/home/public
+    working_dir: /home/webapp
+    command: air
     init: true
     deploy:
       resources:
